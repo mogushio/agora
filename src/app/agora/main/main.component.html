@@ -1,0 +1,58 @@
+<ng-container *ngIf="client; else elseBlock">
+  <div *ngIf="!client.isJoined  && !leave">
+    <app-check-media-device (emitJoinChannel)="joinChannel($event)">
+    </app-check-media-device>
+  </div>
+
+  <div *ngIf="client.isJoined  && !leave" class="dark-brown d-flex p-3">
+    <app-streams class="w-100" [ngClass]="{'streams' : isPresenting}"
+      [localStream]="{uid: client.rtcClient.uid,name: username,initials: initials,level: client.localVolumeLevel,audio: client.audio,camera: client.camera, isPresenting: isPresenting}"
+      [remoteStreams]="remoteStreams" [pinUser]="pinUserDetail">
+    </app-streams>
+    <div class="people-list" *ngIf="closePeopleList">
+      <app-people-list class="w-100"
+      [localStream]="{uid: client.rtcClient.uid,name: username,initials: initials,level: client.localVolumeLevel,audio: client.audio,camera: client.camera, isPresenting: isPresenting}"
+      [peopleList]="remoteStreams" (emitCloseList)="closePeopleList = $event"
+      (emitSendMessageToPeer)="sendMessageToPeer($event)">
+    </app-people-list>
+    </div>
+    <div class="people-list" *ngIf="closeChatList">
+      <app-group-chat class="w-100" [memberName]="username" [memberId]="client.rtcClient.uid"
+        [chatMessages]="client.chatMessages" (emitCloseChat)="closeChatList = $event"
+        (emitSendMessage)="sendMessage($event)">
+      </app-group-chat>
+    </div>
+  </div>
+
+
+  <div *ngIf="client.isJoined && !leave">
+    <app-controls
+      [localStream]="{uid: client.rtcClient.uid,name: username,initials: initials,level: client.localVolumeLevel,audio: client.audio,camera: client.camera, isPresenting: isPresenting}"
+      [peopleList]="closePeopleList" [chatList]="closeChatList"
+      [isScreenPresenting]="screenShareClient ? screenShareClient.isScreenPresenting : false"
+      [disableVideo]="client.disableVideo" (emitLeaveChannel)="leaveChannel()" (emitVideoChannel)="videoChannel()"
+      (emitScreenShare)="joinShare();createScreenShareTrack()" (emitStopScreenShare)="stopScreenShare()"
+      (emitMuteVolume)="muteVolume()" (emitPeopleList)="closePeopleList = $event"
+      (emitChatList)="closeChatList = $event">
+    </app-controls>
+  </div>
+
+  <app-toaster *ngIf="toasterMsg" [toasterMsg]="toasterMsg" (emitToasterMsg)="toasterMsg = $event"></app-toaster>
+  <div [ngClass]="{'loading': client.loading}">
+  </div>
+  </ng-container>
+  <ng-template #elseBlock>
+  <div class="container text-center mt-4 text-black">
+    <h1>
+      The meeting code you entered doesn't work.
+    </h1>
+    <br>
+    <p>
+      Make sure you entered the correct App Id in the URL
+    </p>
+    <br>
+    <button class="btn btn-outline-primary ms-3" type="button" routerLink="/">
+      Return to Credentials
+    </button>
+  </div>
+  </ng-template>

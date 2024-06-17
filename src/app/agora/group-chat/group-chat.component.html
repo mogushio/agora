@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-between">
+  <h4>メッセージ</h4>
+  <p class="cursor-pointer" (click)="closeChat()">×</p>
+</div>
+<hr>
+<div>
+  <ul class="p-0 scroll-58vh">
+    <li class="d-flex justify-content-between mb-2" *ngFor="let msg of chatMessages">
+      <small class="m-0 text-dark">
+        <span *ngIf="memberId == msg.memberId">
+          自分の
+        </span>
+        <span *ngIf="memberId != msg.memberId">
+          {{ msg.memberId }}
+        </span>
+        <span class="text-secondary ms-3">
+          {{ msg.timestamp| date:'h:mm a' }}
+        </span>
+      </small>
+      <p>
+        {{ msg.message }}
+      </p>
+    </li>
+  </ul>
+  <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" formControlName="message">
+      <button [disabled]="chatForm.invalid" class="btn btn-primary circle" type="submit">|></button>
+    </div>
+  </form>
+</div>

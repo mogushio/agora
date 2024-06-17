@@ -1,1 +1,390 @@
+/* Add application styles & imports to this file! */
 /* You can add global styles to this file, and also import other style files */
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+  color: white;
+}
+* {
+  box-sizing: border-box;
+}
+.svg-hover:hover {
+  fill: rgba(26, 115, 232, 0.902);
+}
+.dark-brown {
+  background-color: #202124;
+}
+.light-brown {
+  background-color: #3c4043;
+}
+.height-88vh {
+  height: 88vh;
+}
+.height-82vh {
+  height: 82vh;
+}
+.height-40vh {
+  height: 40vh;
+}
+.height-30vh {
+  height: 30vh;
+}
+.height-25vh {
+  height: 25vh;
+}
+.height-10vh {
+  height: 10vh;
+}
+.height_vh100 {
+  height: 100vh !important;
+}
+.height_vh50 {
+  height: 50vh !important;
+}
+.bottom_10 {
+  bottom: 10px;
+  z-index: 1;
+}
+.max-width-40 {
+  max-width: 40%;
+}
+.max-width-30 {
+  max-width: 30%;
+}
+.max-width-25 {
+  max-width: 25%;
+}
+.max-width-10 {
+  max-width: 10%;
+}
+.ms-70 {
+  margin-left: 70px;
+}
+.me-70 {
+  margin-right: 70px;
+}
+video {
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px 0px rgb(60 64 67 / 30%), 0px 4px 8px 3px rgb(60 64 67 / 15%);
+  background-color: #202124;
+}
+.local_stream_ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 235px;
+  height: 132px;
+  position: fixed;
+  left: 20px;
+  bottom: 100px;
+  z-index: 99;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px 0px rgb(60 64 67 / 30%), 0px 4px 8px 3px rgb(60 64 67 / 15%);
+  background-color: #43474a;
+  overflow: hidden;
+}
+.you {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+  z-index: 1;
+}
+.only_local_stream_ {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 82vh;
+  background-color: #202124;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.screen_share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+}
+.screen_share_user {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 82vh;
+  background-color: #202124;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.mic__unMute {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  z-index: 1;
+}
+.mic__mute {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  z-index: 1;
+}
+.streams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.remote_users__withOutScreenShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.remote_users__withScreenShare {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
+  padding: 20px 10px 10px 0px;
+}
+.stream__withOutScreenShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3c4043;
+  width: 95%;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 5px;
+}
+.stream__withScreenShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202124;
+  width: 140px;
+  height: 80px;
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 8px;
+  background-color: #3c4043;
+  overflow: hidden;
+  max-width: 100%;
+}
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+}
+.box-140 {
+  width: 140px;
+  height: 140px;
+  font-size: 3rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-120 {
+  width: 120px;
+  height: 120px;
+  font-size: 3rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-100 {
+  width: 100px;
+  height: 100px;
+  font-size: 2rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-80 {
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-60 {
+  width: 60px;
+  height: 60px;
+  font-size: 1rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-40 {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.box-30 {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  background-color: rgb(random(255), random(255), random(255));
+}
+.footer__panel {
+  position: fixed;
+  width: 100%;
+  height: 83px;
+  bottom: 0;
+  left: 0;
+  background-color: #202124;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.people-list {
+  display: flex;
+  align-self: center;
+  background-color: white;
+  padding: 20px;
+  color: #202124;
+  width: 40%;
+  height: 82vh;
+  border-radius: 10px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.toaster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  height: auto;
+  border-radius: 6px;
+  width: 25%;
+  color: #202124;
+  background-color: white;
+  z-index: 999;
+  padding: 10px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.fill-white {
+  fill: white;
+}
+.fill-blue {
+  fill: rgba(26, 115, 232, 0.902);
+}
+.circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.scroll-64vh {
+  overflow-y: scroll;
+  height: 64vh;
+}
+.scroll-58vh {
+  overflow-y: scroll;
+  height: 58vh;
+}
+.loading {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 99999;
+  background-color: #202124;
+}
+.loading::after {
+  content: "Loading...";
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+/* CSS for animated bouncing loader. */
+@keyframes bouncing-loader {
+  to {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(26, 115, 232, 0.902);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  align-items: end;
+}
+
+.bouncing-loader > .bounce {
+  width: 3px;
+  height: 3px;
+  margin: 0.5rem 0.1rem;
+  background: white;
+  border-radius: 50%;
+  animation: bouncing-loader 0.4s infinite alternate;
+}
+
+.bouncing-loader > .notBounce {
+  width: 3px;
+  height: 3px;
+  margin: 0.7rem 0.1rem;
+  background: white;
+  border-radius: 50%;
+}
+
+.bouncing-loader > .bounce:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* CSS for animated pulse in initials. */
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.pulses > span {
+  border-radius: 50%;
+  position: absolute;
+  margin: auto auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pulses > span:nth-child(1) {
+  animation: pulse 2s infinite;
+}
+.pulses > span:nth-child(2) {
+  animation: pulse 2s infinite 0.3s;
+}
+.pulses > span:nth-child(3) {
+  animation: pulse 2s infinite 0.6s;
+}
+.pulses > span:nth-child(4) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

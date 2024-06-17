@@ -18,6 +18,9 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "agora-rtc-sdk": "^3.6.11",
+    "agora-rtc-sdk-ng": "^4.20.0",
+    "agora-rtm-sdk": "^1.4.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

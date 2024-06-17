@@ -1,0 +1,119 @@
+<div class="footer__panel">
+  <div>
+    <span>
+      {{ clock | date: 'hh:mm a' }}
+    </span>
+    <app-recording *ngIf="false" class="ms-3">
+    </app-recording>
+  </div>
+
+  <div>
+    <button class="btn btn-danger ms-2 circle" (click)="leaveChannel()">
+      <svg width="24px" height="24px" viewBox="0 0 1000 1000" class="fill-white">
+        <g>
+          <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
+            <path
+              d="M4512.2,2035.3c-30.6-3.8-151.3-17.2-268.2-28.7C3065.9,1889.7,1843.7,1405,872.5,667.5C556.5,428.1,284.4,188.6,209.7,87.1C131.2-20.2,89.1-175.3,102.5-309.4c19.2-212.6,47.9-252.9,632.1-839c628.3-632.1,672.4-662.8,929.1-662.8c185.8,1.9,293.1,46,463.6,197.3c268.2,235.6,549.8,434.8,833.3,586.2c206.9,111.1,296.9,199.2,356.3,348.6c42.1,107.3,44.1,137.9,51.7,735.6l7.7,624.5l136,30.6c409.9,90,557.4,99.6,1498,99.6c938.6,0,1095.7-11.5,1486.5-99.6l132.2-28.7V123.5c0-593.8,13.4-729.8,86.2-873.5c61.3-118.8,124.5-174.3,335.2-287.3c239.4-130.3,457.8-275.8,649.4-434.8c86.2-72.8,201.1-166.7,256.7-212.6c178.1-145.6,448.3-180.1,645.5-80.5c132.2,65.1,1174.3,1109.1,1237.5,1239.4c95.8,195.4,76.6,440.6-47.9,613c-74.7,101.5-346.7,341-662.8,580.4c-952,722.2-2055.4,1170.4-3289.1,1333.3C5617.5,2029.5,4657.8,2054.4,4512.2,2035.3z" />
+          </g>
+        </g>
+      </svg>
+    </button>
+
+    <button class="btn ms-3 circle" [ngClass]="localStream.audio ? 'btn-danger' : 'btn-secondary light-brown'"
+      (click)="muteVolume()">
+      <span *ngIf="localStream.audio">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" class="fill-white">
+          <path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z">
+          </path>
+        </svg>
+      </span>
+      <span *ngIf="!localStream.audio">
+        <svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class="fill-white">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"></path>
+          <path
+            d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z">
+          </path>
+        </svg>
+      </span>
+    </button>
+
+    <button id="camera" [ngClass]="localStream.camera ? 'btn-danger' : 'btn-secondary light-brown'"
+      class="btn ms-3 circle" [disabled]="disableVideo" (click)="videoChannel()">
+      <span *ngIf="!localStream.camera">
+        <svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class="fill-white">
+          <path
+            d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zm-2-.79V18H4V6h12v3.69z">
+          </path>
+        </svg>
+      </span>
+      <span *ngIf="localStream.camera">
+        <svg focusable="false" width="24" height="24" viewBox="0 0 24 24" class="fill-white">
+          <path
+            d="M18 10.48V6c0-1.1-.9-2-2-2H6.83l2 2H16v7.17l2 2v-1.65l4 3.98v-11l-4 3.98zM16 16L6 6 4 4 2.81 2.81 1.39 4.22l.85.85C2.09 5.35 2 5.66 2 6v12c0 1.1.9 2 2 2h12c.34 0 .65-.09.93-.24l2.85 2.85 1.41-1.41L18 18l-2-2zM4 18V6.83L15.17 18H4z">
+          </path>
+        </svg>
+      </span>
+    </button>
+
+    <button *ngIf="!isScreenPresenting" class="btn btn-secondary light-brown ms-3 circle" (click)="screenShare()">
+      <svg width="24" height="24" viewBox="0 0 36 36" class="fill-white">
+        <g id="prefix__Group_1644" data-name="Group 1644" transform="translate(.238)">
+          <g id="prefix__Group_865" data-name="Group 865" transform="translate(1.717 4.291)">
+            <path id="prefix__Subtraction_1"
+              d="M31.263 23H1.737A1.722 1.722 0 0 1 0 21.3V1.7A1.722 1.722 0 0 1 1.737 0h29.526A1.722 1.722 0 0 1 33 1.7v19.6a1.722 1.722 0 0 1-1.737 1.7zM15.255 6.639v11.072a.529.529 0 0 0 .534.524h.711a.529.529 0 0 0 .534-.524V6.639l2.55 2.626a.542.542 0 0 0 .763.008l.494-.484A.512.512 0 0 0 21 8.422a.517.517 0 0 0-.157-.372L16.52 3.813a.529.529 0 0 0-.376-.154.538.538 0 0 0-.378.154l-4.32 4.24a.512.512 0 0 0-.157.368.517.517 0 0 0 .157.372l.494.484a.537.537 0 0 0 .762-.008l2.551-2.627z"
+              class="prefix__cls-2" data-name="Subtraction 1" transform="translate(.045 -.291)" />
+            <rect id="prefix__Rectangle_431" width="15" height="3" class="prefix__cls-2" data-name="Rectangle 431"
+              rx="1.5" transform="translate(9.045 24.709)" />
+          </g>
+          <path id="prefix__Rectangle_432" d="M0 0H36V36H0z" data-name="Rectangle 432" transform="translate(-.238)"
+            style="fill:none" />
+        </g>
+      </svg>
+    </button>
+    <button *ngIf="isScreenPresenting" class="btn btn-danger ms-3 circle" (click)="stopScreenShare()">
+      <svg width="24" height="24" viewBox="0 0 36 36" class="fill-white">
+        <g id="prefix__Group_1644" data-name="Group 1644" transform="translate(.238)">
+          <g id="prefix__Group_865" data-name="Group 865" transform="translate(1.717 4.291)">
+            <path id="prefix__Subtraction_1"
+              d="M31.263 23H1.737A1.722 1.722 0 0 1 0 21.3V1.7A1.722 1.722 0 0 1 1.737 0h29.526A1.722 1.722 0 0 1 33 1.7v19.6a1.722 1.722 0 0 1-1.737 1.7zM15.255 6.639v11.072a.529.529 0 0 0 .534.524h.711a.529.529 0 0 0 .534-.524V6.639l2.55 2.626a.542.542 0 0 0 .763.008l.494-.484A.512.512 0 0 0 21 8.422a.517.517 0 0 0-.157-.372L16.52 3.813a.529.529 0 0 0-.376-.154.538.538 0 0 0-.378.154l-4.32 4.24a.512.512 0 0 0-.157.368.517.517 0 0 0 .157.372l.494.484a.537.537 0 0 0 .762-.008l2.551-2.627z"
+              class="prefix__cls-2" data-name="Subtraction 1" transform="translate(.045 -.291)" />
+            <rect id="prefix__Rectangle_431" width="15" height="3" class="prefix__cls-2" data-name="Rectangle 431"
+              rx="1.5" transform="translate(9.045 24.709)" />
+          </g>
+          <path id="prefix__Rectangle_432" d="M0 0H36V36H0z" data-name="Rectangle 432" transform="translate(-.238)"
+            style="fill:none" />
+        </g>
+      </svg>
+    </button>
+  </div>
+
+  <div>
+    <span class="cursor-pointer" (click)="groupChatList()">
+      <svg class="svg-hover" width="24" height="24" viewBox="0 0 115.98 122.88"
+        [ngClass]="{'fill-white': !chatList, 'fill-blue': chatList}">
+        <g>
+          <path
+            d="M17.2,0h59.47c4.73,0,9.03,1.93,12.15,5.05c3.12,3.12,5.05,7.42,5.05,12.15v38.36c0,4.73-1.93,9.03-5.05,12.15 c-3.12,3.12-7.42,5.05-12.15,5.05H46.93L20.81,95.21c-1.21,1.04-3.04,0.9-4.08-0.32c-0.51-0.6-0.74-1.34-0.69-2.07l1.39-20.07H17.2 c-4.73,0-9.03-1.93-12.15-5.05C1.93,64.59,0,60.29,0,55.56V17.2c0-4.73,1.93-9.03,5.05-12.15C8.16,1.93,12.46,0,17.2,0L17.2,0z M102.31,27.98c3.37,0.65,6.39,2.31,8.73,4.65c3.05,3.05,4.95,7.26,4.95,11.9v38.36c0,4.64-1.89,8.85-4.95,11.9 c-3.05,3.05-7.26,4.95-11.9,4.95h-0.61l1.42,20.44l0,0c0.04,0.64-0.15,1.3-0.6,1.82c-0.91,1.07-2.52,1.19-3.58,0.28l-26.22-23.2 H35.01l17.01-17.3h36.04c7.86,0,14.3-6.43,14.3-14.3V29.11C102.35,28.73,102.34,28.35,102.31,27.98L102.31,27.98z M25.68,43.68 c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9h30.35c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9H25.68L25.68,43.68z M25.68,29.32c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9H68.7c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9H25.68L25.68,29.32z M76.66,5.8H17.2c-3.13,0-5.98,1.28-8.05,3.35C7.08,11.22,5.8,14.06,5.8,17.2v38.36c0,3.13,1.28,5.98,3.35,8.05 c2.07,2.07,4.92,3.35,8.05,3.35h3.34v0.01l0.19,0.01c1.59,0.11,2.8,1.49,2.69,3.08l-1.13,16.26L43.83,67.8 c0.52-0.52,1.24-0.84,2.04-0.84h30.79c3.13,0,5.98-1.28,8.05-3.35c2.07-2.07,3.35-4.92,3.35-8.05V17.2c0-3.13-1.28-5.98-3.35-8.05 C82.65,7.08,79.8,5.8,76.66,5.8L76.66,5.8z" />
+        </g>
+      </svg>
+    </span>
+    <span class="cursor-pointer ms-3" (click)="userList()">
+      <svg class="svg-hover" width="24" height="24" viewBox="0 0 60.123 60.123"
+        [ngClass]="{'fill-white': !peopleList, 'fill-blue': peopleList}">
+        <g>
+          <path
+            d="M57.124,51.893H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,51.893,57.124,51.893z" />
+          <path
+            d="M57.124,33.062H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3   C60.124,31.719,58.781,33.062,57.124,33.062z" />
+          <path
+            d="M57.124,14.231H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,14.231,57.124,14.231z" />
+          <circle cx="4.029" cy="11.463" r="4.029" />
+          <circle cx="4.029" cy="30.062" r="4.029" />
+          <circle cx="4.029" cy="48.661" r="4.029" />
+        </g>
+      </svg>
+    </span>
+  </div>
+</div>

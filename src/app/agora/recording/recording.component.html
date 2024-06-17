@@ -1,0 +1,10 @@
+@if (!isRecordingStart) {
+  <button [disabled]="loading" class="btn btn-outline-danger" (click)="acquireRecording()">
+    ろくおん
+  </button>
+}
+@if (isRecordingStart) {
+  <button [disabled]="loading" class="btn btn-danger" (click)="queryRecording()">
+    ていし
+  </button>
+}
